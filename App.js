@@ -1,13 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import {Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
 export default class App extends React.Component {
-
-
   state = {
     status: 0,
     status_color: "#fff",
@@ -54,19 +51,20 @@ export default class App extends React.Component {
 
 
   componentDidMount = () => {
-    this.getStatus()
-    setInterval(this.getStatus, 30000)
+    //this.getStatus()
+    //setInterval(this.getStatus, 30000)
   } 
 
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <View style={[styles.status,  {backgroundColor: this.state.status_color}]}></View>
-          <View style={styles.message}>
-            <Text>{this.state.message}</Text>
-          </View>
-        </View>
+        <View style={styles.statusbar}/>
+        <View style={styles.github}/>
+        <View style={styles.graph}/>
+        <View style={styles.time_button}/>
+        <View style={styles.status_button}/>
+        <View style={styles.text}/>
+        <View style={styles.guide}/>
       </View>
     )
   } 
@@ -75,22 +73,34 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: "#646464"
+    flexDirection: 'column',
   },
-  status: {
-    height: windowHeight * 0.15 ,
-    width: windowWidth * 0.9,
-    top: windowHeight * 0.325,
-    borderRadius: 10
+  statusbar: {
+    height: StatusBar.currentHeight
   },
-  message: {
-    height: windowHeight * 0.1 ,
-    width: windowWidth,
-    top: windowHeight,
-    backgroundColor: "#0008ff"
+  github: {
+    height: windowHeight * 0.05,
+    backgroundColor: 'blue'
+  },
+  graph: {
+    minHeight: windowWidth,
+    backgroundColor: 'green'
+  },
+  time_button: {
+    minHeight: windowHeight * 0.05,
+    backgroundColor: 'red'
+  },
+  status_button: {
+    minHeight: windowHeight * 0.175,
+    backgroundColor: 'black'
+  },
+  text: {
+    minHeight: windowHeight * 0.05,
+    backgroundColor: 'yellow'
+  },
+  guide: {
+    minHeight: windowHeight * 0.175,
+    backgroundColor: 'brown'
   }
-
 
 });
