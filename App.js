@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Linking  } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Linking, Image, Button} from 'react-native';
 import {Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -8,7 +8,8 @@ export default class App extends React.Component {
   state = {
     status: 0,
     status_color: "#fff",
-    message: ""
+    message: "",
+    time_window: "120"
   }
 
   getStatus = () => {
@@ -67,8 +68,10 @@ export default class App extends React.Component {
             onPress={() => Linking.openURL('https://github.com/Qwert512')}>Qwert512
           </Text>
         </View>
-        <View style={styles.graph}></View>
-        <View style={styles.time_button}></View>
+        <View style={styles.graph}>
+          <Image style={{width: '100%', height: '100%'}} source={{uri: `https://goldfisch.tk/visualize_data?time_window_mins=${this.state.time_window}&x_width=${(windowWidth / 45).toString()}&y_height=${(windowWidth / 45).toString()}`}} />
+        </View>
+        <View style={styles.time_button_view}></View>
         <View style={styles.status_button}></View>
         <View style={styles.text}></View>
         <View style={styles.guide}></View>
@@ -80,7 +83,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   statusbar: {
     height: StatusBar.currentHeight
@@ -88,26 +91,23 @@ const styles = StyleSheet.create({
   github: {
     height: windowHeight * 0.05,
     flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: 'black'
   },
   graph: {
-    minHeight: windowWidth,
-    backgroundColor: 'green'
+    minHeight: windowWidth
   },
-  time_button: {
-    minHeight: windowHeight * 0.05,
-    backgroundColor: 'red'
+  time_button_view: {
+    minHeight: windowHeight * 0.05
   },
   status_button: {
-    minHeight: windowHeight * 0.175,
-    backgroundColor: 'black'
+    minHeight: windowHeight * 0.175
   },
   text: {
-    minHeight: windowHeight * 0.05,
-    backgroundColor: 'yellow'
+    minHeight: windowHeight * 0.05  
   },
   guide: {
-    minHeight: windowHeight * 0.175,
-    backgroundColor: 'brown'
+    minHeight: windowHeight * 0.175
   }
 
 });
