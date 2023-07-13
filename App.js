@@ -95,7 +95,9 @@ const styles = StyleSheet.create({
     borderColor: 'black'
   },
   graph: {
-    minHeight: windowWidth
+    minHeight: windowWidth,
+    borderBottomWidth: 1,
+    borderColor: 'black'
   },
   time_button_view: {
     minHeight: windowHeight * 0.05
