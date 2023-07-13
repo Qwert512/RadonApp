@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Linking  } from 'react-native';
 import {Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -58,13 +58,20 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.statusbar}/>
-        <View style={styles.github}/>
-        <View style={styles.graph}/>
-        <View style={styles.time_button}/>
-        <View style={styles.status_button}/>
-        <View style={styles.text}/>
-        <View style={styles.guide}/>
+        <View style={styles.statusbar}></View>
+        <View style={styles.github}>
+          <Text style={{flex: 1, textAlign: 'left', color: 'blue', fontSize: windowHeight * 0.04}}
+            onPress={() => Linking.openURL('https://github.com/Onuphrius')}>Onuphrius 
+          </Text>
+          <Text style={{flex: 1, textAlign: 'right', color: 'blue', fontSize: windowHeight * 0.04}}
+            onPress={() => Linking.openURL('https://github.com/Qwert512')}>Qwert512
+          </Text>
+        </View>
+        <View style={styles.graph}></View>
+        <View style={styles.time_button}></View>
+        <View style={styles.status_button}></View>
+        <View style={styles.text}></View>
+        <View style={styles.guide}></View>
       </View>
     )
   } 
@@ -80,7 +87,7 @@ const styles = StyleSheet.create({
   },
   github: {
     height: windowHeight * 0.05,
-    backgroundColor: 'blue'
+    flexDirection: 'row',
   },
   graph: {
     minHeight: windowWidth,
