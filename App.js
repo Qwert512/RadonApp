@@ -6,7 +6,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 export default class App extends React.Component {
   state = {
-    status: 0,
+    status: "0",
     status_color: "#fff",
     message: "",
     time_window: "10080"
@@ -21,16 +21,17 @@ export default class App extends React.Component {
           status: responseJson["status"],
           message: responseJson["message"]
         })
+        var status_response = responseJson["status"]
 
-        if (this.state.status == 1) {
+        if (status_response == "1") {
           this.setState({
             status_color: "#00ff00"
           })
-        } else if (this.state.status == 2) {
+        } else if (status_response == "2") {
           this.setState({
             status_color: "#ffff00"
           })
-        } else if (this.state.status == 3) {
+        } else if (status_response == "3") {
           this.setState({
             status_color: "#ff0000"
           })
@@ -44,7 +45,7 @@ export default class App extends React.Component {
       .catch((error) => {
         console.error(error)
         this.setState({
-          status: 0,
+          status: "0",
           status_color: "#fff",
           message: "",
         })
@@ -80,9 +81,11 @@ export default class App extends React.Component {
           <Button style={styles.time_button} title='All' onPress={() => this.setState({time_window: "0"})}></Button>
         </View>
         <View style={styles.status_button}>
-
+          <View style={[styles.status,  {backgroundColor: this.state.status_color}]}></View>
         </View>
-        <View style={styles.text}></View>
+        <View style={styles.text}>
+          <Text style={{textAlign: "center", fontSize: windowHeight * 0.04}}>{this.state.message}</Text>
+        </View>
         <View style={styles.guide}></View>
       </View>
     )
@@ -116,9 +119,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     padding: 5
   },
+  status: {
+    borderRadius: 10,
+    flex: 1
+  },
   status_button: {
     minHeight: windowHeight * 0.175,
     borderBottomWidth: 1,
+    padding: 10,
     borderColor: 'black'
   },
   text: {
