@@ -55,7 +55,7 @@ export default class App extends React.Component {
     //this.getStatus()
     //setInterval(this.getStatus, 30000)
   } 
-
+//Monat, Woche, 2 Wochen , 1 Tag, 1 Stunde, All
   render() {
     return (
       <View style={styles.container}>
@@ -100,16 +100,24 @@ const styles = StyleSheet.create({
     borderColor: 'black'
   },
   time_button_view: {
-    minHeight: windowHeight * 0.05
+    minHeight: windowHeight * 0.05,
+    borderBottomWidth: 1,
+    borderColor: 'black'
   },
   status_button: {
-    minHeight: windowHeight * 0.175
+    minHeight: windowHeight * 0.175,
+    borderBottomWidth: 1,
+    borderColor: 'black'
   },
   text: {
-    minHeight: windowHeight * 0.05  
+    minHeight: windowHeight * 0.05 ,
+    borderBottomWidth: 1,
+    borderColor: 'black'
   },
   guide: {
-    minHeight: windowHeight * 0.175
+    minHeight: windowHeight * 0.175,
+    borderBottomWidth: 1,
+    borderColor: 'black'
   }
 
 });
